@@ -38,6 +38,6 @@ module binary_counter (
      assign Q3=c_out[3];
 
   // List all unused inputs to prevent warnings
-//     wire _unused = &{ena, uo_out[7:0], uio_in[7:0]};
+//     wire _unused = &{ena, uio_in[7:0]};
 
 endmodule
