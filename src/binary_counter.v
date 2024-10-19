@@ -6,16 +6,17 @@
 `default_nettype none
 
 module tt_um_counter (
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs 
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
-//    output wire [7:0] uo_out,   // Dedicated outputs 
-//    input  wire [7:0] uio_in,   // IOs: Input path
-//    output wire [7:0] uio_out,  // IOs: Output path
-//    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input  wire       clk,      // clock
     input  wire       rst_n,    // reset_n - low to reset   
     input  wire       load,     // counter load pulse - high to load
     output wire [3:0] c_out,    // counter state
-    input wire [3:0] c_in,    // load value
+    input wire  [3:0] c_in,     // load value
     output wire Q0,
     output wire Q1,
     output wire Q2,
@@ -37,7 +38,11 @@ module tt_um_counter (
      assign Q2=c_out[2];
      assign Q3=c_out[3];
 
+     assign uo_out = 0;
+     assign uio_out = 0;
+     assign uio_oe  = 0;
+
   // List all unused inputs to prevent warnings
-//     wire _unused = &{ena, uio_in[7:0]};
+  //     wire _unused = &{ena, uo_out[7:0], uio_in[7:0]};
 
 endmodule
