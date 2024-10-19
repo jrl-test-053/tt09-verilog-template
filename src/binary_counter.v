@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module binary_counter (
+module tt_um_counter (
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
 //    output wire [7:0] uo_out,   // Dedicated outputs 
 //    input  wire [7:0] uio_in,   // IOs: Input path
